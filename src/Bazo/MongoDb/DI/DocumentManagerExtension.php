@@ -117,7 +117,7 @@ class DocumentManagerExtension extends CompilerExtension
 			$reader = new IndexedReader($reader);
 		}
 
-		if (class_exists(\Gedmo\DoctrineExtensions::class)) {
+		if (class_exists('\Gedmo\DoctrineExtensions')) {
 			\Gedmo\DoctrineExtensions::registerAnnotations();
 
 			$configuration->addFilter('soft-deleteable', 'Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter');
