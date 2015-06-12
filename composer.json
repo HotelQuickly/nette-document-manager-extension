@@ -15,7 +15,7 @@
 	"require": {
 		"php": ">=5.4.0",
 		"doctrine/mongodb-odm": "@dev",
-		"nette/di": "dev-master"
+		"nette/nette": "2.0.*"
 	},
 	"require-dev": {
 		"gedmo/doctrine-extensions": "@dev"
