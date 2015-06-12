@@ -139,9 +139,14 @@ class DocumentManagerExtension extends CompilerExtension
 		$logger = new \Bazo\MongoDb\Logger($config['logger'], $config['loggerPrefix']);
 		$configuration->setLoggerCallable([$logger, 'logQuery']);
 
-		$mongo		 = new \MongoClient($config['uri'], $config['mongoOptions']);
-		$connection	 = new Connection($mongo);
-		$dm			 = DocumentManager::create($connection, $configuration, $evm);
+		try {
+			$mongo = new \MongoClient($config['uri'], $config['mongoOptions']);
+			$connection = new Connection($mongo);
+			$dm = DocumentManager::create($connection, $configuration, $evm);
+		} catch (\MongoConnectionException $e) {
+			// when run nette testing, we didn't connect mongodb
+			return null;
+		}
 
 		return $dm;
 	}
