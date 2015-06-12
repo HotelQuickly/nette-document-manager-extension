@@ -12,6 +12,10 @@ use Doctrine\ODM\MongoDB\DocumentManager;
 use Doctrine\ODM\MongoDB\Mapping\Driver\AnnotationDriver;
 use Nette\DI\CompilerExtension;
 use Nette\DI\Container;
+// compatibility for nette 2.0.x and 2.1.x
+if (!class_exists('Nette\DI\CompilerExtension')) {
+	class_alias('Nette\Config\CompilerExtension', 'Nette\DI\CompilerExtension');
+}
 
 /**
  * @author Martin Bažík <martin@bazo.sk>
