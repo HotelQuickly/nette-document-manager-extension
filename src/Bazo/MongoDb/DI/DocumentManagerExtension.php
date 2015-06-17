@@ -145,7 +145,7 @@ class DocumentManagerExtension extends CompilerExtension
 			$dm = DocumentManager::create($connection, $configuration, $evm);
 		} catch (\MongoConnectionException $e) {
 			// when run nette testing, we didn't connect mongodb
-			return null;
+			$dm = DocumentManager::create();
 		}
 
 		return $dm;
